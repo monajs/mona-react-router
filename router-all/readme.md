@@ -1,0 +1,1 @@
+支持hase 和history两套方式
