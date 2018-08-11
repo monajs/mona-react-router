@@ -10,7 +10,7 @@ export default class Home extends Component {
 	
 	render () {
 		return (
-			<Link to="test">home</Link>
+			<Link to={{ path: 'test', state: { a: 1 } }}>home</Link>
 		)
 	}
 }

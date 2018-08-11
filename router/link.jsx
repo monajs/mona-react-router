@@ -8,12 +8,11 @@ export default class Link extends Component {
 	
 	constructor (props) {
 		super(props)
-		let to = this.props.to
+		const { to } = this.props
 		if (to) {
 			if (typeof(to) === 'string') {
 				this.routeInfo = Route.matchRoute(to) || {}
-			}
-			if (to instanceof Object) {
+			} else if (Util.isJSON(to)) {
 				this.routeInfo = Route.matchRoute(to.path) || {}
 			}
 		}
@@ -21,7 +20,7 @@ export default class Link extends Component {
 	
 	componentWillUnmount () {
 		this.unmount = true
-		Route.off('changeFinish', this.onChange)
+		Route.off(Util.ROUTER_CHANGE_FINISH_EVENT, this.onChange)
 	}
 	
 	componentDidMount () {
@@ -31,7 +30,7 @@ export default class Link extends Component {
 			}
 			this.setState({})
 		}
-		Route.on('changeFinish', this.onChange)
+		Route.on(Util.ROUTER_CHANGE_FINISH_EVENT, this.onChange)
 	}
 	
 	isLeftClickEvent (event) {
@@ -46,20 +45,25 @@ export default class Link extends Component {
 		const { to, target, onClick } = this.props
 		onClick && onClick(e)
 		
-		if (this.isModifiedEvent(e) || !this.isLeftClickEvent(e)) return
+		if (Route.routeConfig.type !== Util.ROUTER_TYPE_KEY_HISTORY) {
+			return
+		}
+		if (this.isModifiedEvent(e) || !this.isLeftClickEvent(e)) {
+			return
+		}
 		
 		if (target || e.defaultPrevented) {
 			return
 		}
 		let state = {}
 		let title = ''
-		if (to instanceof Object) {
+		if (Util.isJSON(to)) {
 			state = to.state || {}
 			title = to.title || ''
 		}
 		window.history.pushState(state, title, href)
 		e.preventDefault()
-		Route.emit(Util.HISTORY_POPSTATE_EVENT_NAME)
+		Route.format()
 		return false
 	}
 	
@@ -69,8 +73,8 @@ export default class Link extends Component {
 		if (this.routeInfo.routePath === Route.current.routePath) {
 			isActive = true
 		}
-		if (!isActive && Route.routeConf.relation && Route.routeConf.relation[Route.current.path]) {
-			isActive = Route.routeConf.relation[Route.current.path].parents.indexOf(this.routeInfo.path) >= 0
+		if (!isActive && Route.routeConfig.relation && Route.routeConfig.relation[Route.current.path]) {
+			isActive = Route.routeConfig.relation[Route.current.path].parents.indexOf(this.routeInfo.path) >= 0
 		}
 		
 		let actName = isActive ? activeClassName : ''

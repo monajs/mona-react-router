@@ -1,8 +1,8 @@
-import React from './index'
-
 class Util {
-	ROUTER_CHANGE_EVENT_NAME = 'monaReactRouterChange'
-	HISTORY_POPSTATE_EVENT_NAME = 'monaHistoryPopstate'
+	ROUTER_CHANGE_EVENT = 'monaReactRouterChange'
+	ROUTER_CHANGE_FINISH_EVENT = 'monaReactRouterChangeFinish'
+	ROUTER_TYPE_KEY_HASH = 'hash'
+	ROUTER_TYPE_KEY_HISTORY = 'history'
 	
 	isJSON (data) {
 		return typeof(data) === 'object' && Object.prototype.toString.call(data).toLowerCase() === '[object object]'

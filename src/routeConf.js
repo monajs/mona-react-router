@@ -5,11 +5,12 @@ import Home from 'pages/home'
 export default {
 	index: 'home',
 	emptyPage: 'test',
+	type: 'history',
 	routeList: [
 		{
 			layout: DefaultLayout,
 			routes: {
-				'home/:name': Home
+				'home/:name/:count': Home
 			}
 		}, {
 			routes: {
@@ -17,7 +18,7 @@ export default {
 			}
 		}, {
 			routes: {
-				'400': NoMatch
+				'404': NoMatch
 			}
 		}
 	]
