@@ -6,7 +6,7 @@
 	"scripts": {
 		"start": "node ./build/webpack.dev.js",
 		"build": "export NODE_ENV=prodution && node ./build/webpack.build.js",
-		"config": "babel  --out-dir build"
+		"babel": "rm -rf lib && BABEL_ENV=prodution && babel router --out-dir lib --copy-files"
 	},
 	"devDependencies": {
 		"babel-core": "^6.26.0",
