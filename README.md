@@ -3,6 +3,10 @@
 摒弃同类产品的劣根，汲取优秀产品的精华，结合数据管理的优势，打造出轻量实用幸福的产品，为react-router更好的赋能😂😂😂！！
 > 请容我小小的吹个牛逼~
 
+## 联系我
+微信： yx12032331
+![Image text](./images/qrcode.png)
+
 ## 大致介绍
 
 这款轻量版 react-router是基于 history api 和 hash 实现的，用户可以根据业务场景和需求选择 router 类型。
