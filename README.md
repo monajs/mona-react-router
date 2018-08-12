@@ -4,7 +4,6 @@
 > 请容我小小的吹个牛逼~
 
 ## 联系我
-微信： yx12032331
 ![Image text](./images/qrcode.png)
 
 ## 大致介绍
