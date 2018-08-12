@@ -1,13 +1,32 @@
 {
 	"name": "moreact-router",
-	"version": "0.0.1",
-	"author": "yangxi",
-	"description": "mo-react-router",
+	"version": "0.1.0",
+	"description": "Mona - 赋能版 react-router",
+	"main": "./lib/index.js",
+	"files": [
+		"lib"
+	],
 	"scripts": {
 		"start": "node ./build/webpack.dev.js",
 		"build": "export NODE_ENV=prodution && node ./build/webpack.build.js",
 		"babel": "rm -rf lib && BABEL_ENV=prodution && babel router --out-dir lib --copy-files"
 	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/func-star/mo-react-router.git"
+	},
+	"keywords": [
+		"mona",
+		"react-router",
+		"mo-react-router",
+		"router"
+	],
+	"author": "yangxi",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/func-star/mo-react-router/issues"
+	},
+	"homepage": "https://github.com/func-star/mo-react-router#readme",
 	"devDependencies": {
 		"babel-core": "^6.26.0",
 		"babel-loader": "^7.1.2",
