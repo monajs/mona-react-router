@@ -10,6 +10,8 @@ class Route extends Events {
 			isHistory: routeConfig.type === Util.ROUTER_TYPE_KEY_HISTORY // 限定死了hash 和history
 		}, routeConfig)
 		
+		Router.routeConfig = this.routeConfig
+		
 		this.format()
 		
 		const { isHistory } = this.routeConfig
@@ -123,16 +125,6 @@ class Route extends Events {
 			return '/' + path + (data ? '?' + Url.param(data) : '')
 		} else {
 			return '#' + path + (data ? '?' + Url.param(data) : '')
-		}
-	}
-	
-	go (path, data, title = '', state = {}) {
-		const { isHistory } = this.routeConfig
-		if (isHistory) {
-			window.history.pushState(state, title, '/' + path + (data ? '?' + Url.param(data) : ''))
-			this.format()
-		} else {
-			window.location.href('#' + path + (data ? '?' + Url.param(data) : ''))
 		}
 	}
 }

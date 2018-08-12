@@ -61,7 +61,6 @@ export default class Link extends Component {
 			state = to.state || {}
 			title = to.title || ''
 		}
-		console.log(href)
 		window.history.pushState(state, title, href)
 		e.preventDefault()
 		Route.format()

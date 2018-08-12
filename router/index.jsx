@@ -1,12 +1,24 @@
 import React, { Component } from 'react'
 import Route from './route'
 import Util from './util'
+import Url from './url'
 import Link from './link'
 
 export default class Router extends Component {
 	static link = Link
 	static current = {}
 	static routeInfo = {}
+	static routeConfig = {}
+	
+	static go (path, data, title = '', state = {}) {
+		const { isHistory } = Route.routeConfig
+		if (isHistory) {
+			window.history.pushState(state, title, '/' + path + (data ? '?' + Url.param(data) : ''))
+			Route.format()
+		} else {
+			window.location.href('#' + path + (data ? '?' + Url.param(data) : ''))
+		}
+	}
 	
 	constructor (props) {
 		super(props)
@@ -28,7 +40,7 @@ export default class Router extends Component {
 	componentDidMount () {
 		Route.on(Util.ROUTER_CHANGE_EVENT, () => {
 			this.setState({}, () => {
-				//渲染完成触发渲染路由事件
+				// 渲染完成触发渲染路由事件
 				Route.changeFinish()
 			})
 		})
