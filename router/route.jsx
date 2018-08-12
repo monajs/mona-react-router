@@ -110,7 +110,7 @@ class Route extends Events {
 	switchPage (path, data, title = '', state = {}) {
 		const { isHistory } = this.routeConfig
 		if (isHistory) {
-			window.history.replaceState(state, title, path + (data ? '?' + Url.param(data) : ''))
+			window.history.replaceState(state, title, '/' + path + (data ? '?' + Url.param(data) : ''))
 			this.format()
 		} else {
 			window.location.replace('#' + path + (data ? '?' + Url.param(data) : ''))
@@ -129,7 +129,7 @@ class Route extends Events {
 	go (path, data, title = '', state = {}) {
 		const { isHistory } = this.routeConfig
 		if (isHistory) {
-			window.history.pushState(state, title, path + (data ? '?' + Url.param(data) : ''))
+			window.history.pushState(state, title, '/' + path + (data ? '?' + Url.param(data) : ''))
 			this.format()
 		} else {
 			window.location.href('#' + path + (data ? '?' + Url.param(data) : ''))
