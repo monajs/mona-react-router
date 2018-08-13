@@ -23,12 +23,12 @@
 $ npm i --save mo-react-router
 ```
 
-- [上手使用](#use)
-- [如何实现页面间跳转](#jump)
-- [如何获取页面的信息](#pathInfo)
-- [如何监听路由变化](#router)
+- [上手使用](#上手使用)
+- [如何实现页面间跳转](#如何实现页面间跳转)
+- [如何获取页面的信息](#如何获取页面的信息，例如参数、根路径等)
+- [如何监听路由变化](#如何监听路由变化)
 
-### <span id = "use">上手使用</span>
+### 上手使用
 
 ```
 import React, { Component } from 'react';
@@ -75,7 +75,7 @@ render(<Router config={routerConf} />, document.getElementById('appWrapper'));
 - `routes` 指的是页面的路径和页面实例的映射关系
 - 当路由类型为 history 时，可以通过 `/:`的姿势配置 url 传参数形式
 
-<span id = "jump">### 如何实现页面间跳转</span>
+### 如何实现页面间跳转
 
 ```
 import Router from 'router'
@@ -115,7 +115,7 @@ Router.go ('404', {name: 'yangxi'}, 'title', {s: 'state'})
 | state | 当路由类型为 history 时传递的 state 值 | Object | {} |
 
 
-### <span id = "pathInfo">如何获取页面的信息，例如参数、根路径等</span>
+### 如何获取页面的信息，例如参数、根路径等
 #### 获取本页面信息
 ```
 import Router from 'router'
@@ -148,7 +148,7 @@ console.dir(Router.routeInfo)
 | state | 当路由类型为 history 时，页面传递的 state 参数 | Object | null |
 | url | url 实例 | Object | null |
 
-### <span id = "router">如何监听路由变化</span>
+### 如何监听路由变化
 
 ```
 import Router from 'router'
