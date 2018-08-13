@@ -101,7 +101,6 @@ class Route extends Events {
 				return routeInfo
 			}
 		}
-		console.error('请检查页面链接！')
 		return false
 	}
 	

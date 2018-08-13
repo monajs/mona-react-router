@@ -21,11 +21,15 @@ export default class Router extends Component {
 	}
 	
 	static addEventListener (eventName, callback) {
+		const eventsMap = {
+			onChange: Util.ROUTER_CHANGE_EVENT
+		}
+		const keys = Object.keys(eventsMap)
 		// 目前仅支持监听 onChange 事件
-		if (eventName !== 'onChange') {
+		if (keys.indexOf(eventName) === -1) {
 			return
 		}
-		Route.on(Util.ROUTER_CHANGE_EVENT, ()=>{
+		Route.on(eventsMap[eventName], () => {
 			callback(Route.current)
 		})
 	}
