@@ -20,6 +20,16 @@ export default class Router extends Component {
 		}
 	}
 	
+	static addEventListener (eventName, callback) {
+		// 目前仅支持监听 onChange 事件
+		if (eventName !== 'onChange') {
+			return
+		}
+		Route.on(Util.ROUTER_CHANGE_EVENT, ()=>{
+			callback(Route.current)
+		})
+	}
+	
 	constructor (props) {
 		super(props)
 		this.verify(props)
@@ -44,6 +54,10 @@ export default class Router extends Component {
 				Route.changeFinish()
 			})
 		})
+	}
+	
+	componentWillUnmount () {
+		Route.off(Util.ROUTER_CHANGE_EVENT)
 	}
 	
 	render () {

@@ -23,7 +23,12 @@
 $ npm i --save mo-react-router
 ```
 
-### 使用
+[- 上手使用](#use)
+[- 如何实现页面间跳转](#jump)
+[- 如何获取页面的信息](#pathInfo)
+[- 如何监听路由变化](#router)
+
+<span id = "use">### 上手使用</span>
 
 ```
 import React, { Component } from 'react';
@@ -70,7 +75,7 @@ render(<Router config={routerConf} />, document.getElementById('appWrapper'));
 - `routes` 指的是页面的路径和页面实例的映射关系
 - 当路由类型为 history 时，可以通过 `/:`的姿势配置 url 传参数形式
 
-### 如何实现页面间跳转
+<span id = "jump">### 如何实现页面间跳转</span>
 
 ```
 import Router from 'router'
@@ -110,7 +115,7 @@ Router.go ('404', {name: 'yangxi'}, 'title', {s: 'state'})
 | state | 当路由类型为 history 时传递的 state 值 | Object | {} |
 
 
-### 如何获取页面的信息，例如参数、根路径等
+<span id = "pathInfo">### 如何获取页面的信息，例如参数、根路径等</span>
 #### 获取本页面信息
 ```
 import Router from 'router'
@@ -142,3 +147,16 @@ console.dir(Router.routeInfo)
 | path | route 配置中的路径配置，包含参数 | String | '' |
 | state | 当路由类型为 history 时，页面传递的 state 参数 | Object | null |
 | url | url 实例 | Object | null |
+
+<span id = "router">### 如何监听路由变化</span>
+
+```
+import Router from 'router'
+...
+
+Router.addEventListener('onChange', (res) => {
+	console.log(res)
+})
+```
+
+* 目前仅支持了 onChange事件
