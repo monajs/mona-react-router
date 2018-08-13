@@ -17,7 +17,10 @@ export default class Home extends Component {
 	
 	render () {
 		return (
-			<div onClick={this.go.bind(this)}>home</div>
+			<div>
+				<Link className="sss" activeClassName="active" to={{ path: 'home/name/321', state: { a: 1 } }}>test</Link>
+				<div onClick={this.go.bind(this)}>home</div>
+			</div>
 		)
 	}
 }

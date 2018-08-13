@@ -84,14 +84,16 @@ const Link = Router.link
 
 ...
 
-<Link to={{ path: 'home/name/321?age=25', state: { a: 1 } }}>test</Link>
-// <Link to='home/name/321?age=25'>test</Link>
+<Link activeClassName="active" className="a" to={{ path: 'home/name/321?age=25', state: { a: 1 } }}>test</Link>
+// <Link activeClassName="active" className="a" to='home/name/321?age=25'>test</Link>
 ```
 #### Link 组件 api
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | :-- |
 | to | 跳转的目标页面信息 | String|Object | null |
+| activeClassName | 激活状态下的class | String | '' |
+| className | 附加className | String | '' |
 
 * 当路由类型为 history 时，可以通过设置 state 值来传递 history 的 state 属性
 

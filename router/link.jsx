@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import Route from './route'
 import Util from './util'
-import classNames from 'classnames'
 
 export default class Link extends Component {
 	routeInfo = {}
@@ -69,24 +68,25 @@ export default class Link extends Component {
 	
 	render () {
 		const { className, activeClassName, to, children, ...props } = this.props
-		let isActive = false
-		if (this.routeInfo.routePath === Route.current.routePath) {
-			isActive = true
-		}
+		let isActive = this.routeInfo.routePath === Route.current.routePath
+		
 		if (!isActive && Route.routeConfig.relation && Route.routeConfig.relation[Route.current.path]) {
 			isActive = Route.routeConfig.relation[Route.current.path].parents.indexOf(this.routeInfo.path) >= 0
 		}
 		
-		let actName = isActive ? activeClassName : ''
+		let klass = isActive ? activeClassName : ''
+		if (className) {
+			klass = klass + ' ' + className
+		}
 		
 		let href = ''
-		if (to instanceof Object) {
+		if (Util.isJSON(to)) {
 			href = Route.href(to.path, to.query)
 		} else {
 			href = Route.href(to)
 		}
 		return (
-			<a className={classNames(actName, className)} href={href} onClick={this.onClick.bind(this, href)} {...props}>{children}</a>
+			<a className={klass} href={href} onClick={this.onClick.bind(this, href)} {...props}>{children}</a>
 		)
 	}
 }

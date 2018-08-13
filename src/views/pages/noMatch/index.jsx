@@ -10,7 +10,7 @@ export default class NoMatch extends Component {
 	
 	render () {
 		return (
-			<Link to={{ path: 'home/name/321?age=25', state: { a: 1 } }}>test</Link>
+			<Link className="sss" activeClassName="active" to={{ path: 'home/name/321?age=25', state: { a: 1 } }}>test</Link>
 		)
 	}
 }
