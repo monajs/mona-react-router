@@ -28,7 +28,7 @@ $ npm i --save mo-react-router
 [- 如何获取页面的信息](#pathInfo)
 [- 如何监听路由变化](#router)
 
-<span id = "use">### 上手使用</span>
+### <span id = "use">上手使用</span>
 
 ```
 import React, { Component } from 'react';
@@ -115,7 +115,7 @@ Router.go ('404', {name: 'yangxi'}, 'title', {s: 'state'})
 | state | 当路由类型为 history 时传递的 state 值 | Object | {} |
 
 
-<span id = "pathInfo">### 如何获取页面的信息，例如参数、根路径等</span>
+### <span id = "pathInfo">如何获取页面的信息，例如参数、根路径等</span>
 #### 获取本页面信息
 ```
 import Router from 'router'
@@ -148,7 +148,7 @@ console.dir(Router.routeInfo)
 | state | 当路由类型为 history 时，页面传递的 state 参数 | Object | null |
 | url | url 实例 | Object | null |
 
-<span id = "router">### 如何监听路由变化</span>
+### <span id = "router">如何监听路由变化</span>
 
 ```
 import Router from 'router'
