@@ -23,10 +23,10 @@
 $ npm i --save mo-react-router
 ```
 
-[- 上手使用](#use)
-[- 如何实现页面间跳转](#jump)
-[- 如何获取页面的信息](#pathInfo)
-[- 如何监听路由变化](#router)
+- [上手使用](#use)
+- [如何实现页面间跳转](#jump)
+- [如何获取页面的信息](#pathInfo)
+- [如何监听路由变化](#router)
 
 ### <span id = "use">上手使用</span>
 
