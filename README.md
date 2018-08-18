@@ -19,7 +19,7 @@
 
 ### 安装
 
-```
+```bash
 $ npm i --save mo-react-router
 ```
 
@@ -30,7 +30,7 @@ $ npm i --save mo-react-router
 
 ### 上手使用
 
-```
+```js
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 import Router from 'router';
@@ -77,7 +77,7 @@ render(<Router config={routerConf} />, document.getElementById('appWrapper'));
 
 ### 如何实现页面间跳转
 
-```
+```js
 import Router from 'router'
 
 const Link = Router.link
@@ -99,7 +99,7 @@ const Link = Router.link
 
 #### api 跳转
 
-```
+```js
 import Router from 'router'
 
 ...
@@ -119,7 +119,7 @@ Router.go ('404', {name: 'yangxi'}, 'title', {s: 'state'})
 
 ### 如何获取页面的信息
 #### 获取本页面信息
-```
+```js
 import Router from 'router'
 
 ...
@@ -127,7 +127,7 @@ import Router from 'router'
 console.dir(Router.current)
 ```
 #### 获取其他面信息
-```
+```js
 import Router from 'router'
 
 ...
@@ -152,7 +152,7 @@ console.dir(Router.routeInfo)
 
 ### 如何监听路由变化
 
-```
+```js
 import Router from 'router'
 ...
 
