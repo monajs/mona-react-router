@@ -8,7 +8,7 @@
 
 ## 大致介绍
 
-这款轻量版 react-router是基于 history api 和 hash 实现的，用户可以根据业务场景和需求选择 router 类型。
+这款轻量版 react-router 是基于 history api 和 hash 实现的，用户可以根据业务场景和需求选择 router 类型。
 > router 实现可以参考 [对前端路由选择的思考](https://github.com/func-star/blog/issues/22)
 
 除此之外，mo-react-router 还融合了全局状态管理，用户可以将数据绑定在当前路径实例上，用户可以自由方便的通过路由来获取其他模块的数据。
