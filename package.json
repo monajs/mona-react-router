@@ -1,6 +1,6 @@
 {
 	"name": "moreact-router",
-	"version": "0.3.2",
+	"version": "0.3.3",
 	"description": "Mona - 赋能版 react-router",
 	"main": "./lib/index.js",
 	"files": [

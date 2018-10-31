@@ -3,7 +3,7 @@
 摒弃同类产品的劣根，汲取优秀产品的精华，结合数据管理的优势，打造出轻量实用幸福的产品，为react-router更好的赋能😂😂😂！！
 > 请容我小小的吹个牛逼~
 
-[![npm](https://img.shields.io/npm/v/moreact-router.svg?style=flat-square)](https://www.npmjs.com/package/moreact-router) [![npm](https://img.shields.io/npm/dt/moreact-router.svg?style=flat-square)](https://www.npmjs.com/package/moreact-router) 
+[![npm](https://img.shields.io/npm/v/moreact-router.svg?style=flat-square)](https://www.npmjs.com/package/moreact-router) [![npm](https://img.shields.io/npm/dt/moreact-router.svg?style=flat-square)](https://www.npmjs.com/package/moreact-router)
 
 ## 联系我
 > 微信：599321378
@@ -22,7 +22,7 @@
 ### 安装
 
 ```bash
-$ npm i --save mo-react-router
+$ npm i --save moreact-router
 ```
 
 - [上手使用](#上手使用)
