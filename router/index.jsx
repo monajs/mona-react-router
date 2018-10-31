@@ -16,7 +16,7 @@ export default class Router extends Component {
 			window.history.pushState(state, title, '/' + path + (data ? '?' + Url.param(data) : ''))
 			Route.format()
 		} else {
-			window.location.href('#' + path + (data ? '?' + Url.param(data) : ''))
+			window.location.href = `#${path}${data ? '?' + Url.param(data) : ''}`
 		}
 	}
 	
@@ -46,7 +46,7 @@ export default class Router extends Component {
 			throw new Error('请检查 config props属性类型')
 		}
 		const { type } = props.config
-		if (type && !(type === Util.ROUTER_TYPE_KEY_HISTORY || type === Util.ROUTER_TYPE_KEY_HISTORY)) {
+		if (type && !(type === Util.ROUTER_TYPE_KEY_HISTORY || type === Util.ROUTER_TYPE_KEY_HASH)) {
 			throw new Error('type 属性仅支持hash 和 history')
 		}
 	}

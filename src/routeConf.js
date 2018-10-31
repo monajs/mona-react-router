@@ -5,7 +5,7 @@ import Home from 'pages/home'
 export default {
 	index: 'home',
 	emptyPage: 'test',
-	type: 'history',
+	type: 'hash',
 	routeList: [
 		{
 			layout: DefaultLayout,
