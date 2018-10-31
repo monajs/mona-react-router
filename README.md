@@ -35,7 +35,7 @@ $ npm i --save moreact-router
 ```js
 import React, { Component } from 'react';
 import { render } from 'react-dom';
-import Router from 'router';
+import Router from 'moreact-router';
 
 import DefaultLayout from 'views/layout/default'
 import NoMatch from 'pages/noMatch'
@@ -80,7 +80,7 @@ render(<Router config={routerConf} />, document.getElementById('appWrapper'));
 ### 如何实现页面间跳转
 
 ```js
-import Router from 'router'
+import Router from 'moreact-router'
 
 const Link = Router.link
 
@@ -102,7 +102,7 @@ const Link = Router.link
 #### api 跳转
 
 ```js
-import Router from 'router'
+import Router from 'moreact-router'
 
 ...
 
@@ -122,7 +122,7 @@ Router.go ('404', {name: 'yangxi'}, 'title', {s: 'state'})
 ### 如何获取页面的信息
 #### 获取本页面信息
 ```js
-import Router from 'router'
+import Router from 'moreact-router'
 
 ...
 
@@ -130,7 +130,7 @@ console.dir(Router.current)
 ```
 #### 获取其他面信息
 ```js
-import Router from 'router'
+import Router from 'moreact-router'
 
 ...
 
@@ -155,7 +155,7 @@ console.dir(Router.routeInfo)
 ### 如何监听路由变化
 
 ```js
-import Router from 'router'
+import Router from 'moreact-router'
 ...
 
 Router.addEventListener('onChange', (res) => {
