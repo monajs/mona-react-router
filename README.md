@@ -1,12 +1,11 @@
 # 轻量赋能版 react-router
 
-摒弃同类产品的劣根，汲取优秀产品的精华，结合数据管理的优势，打造出轻量实用幸福的产品，为react-router更好的赋能😂😂😂！！
-> 请容我小小的吹个牛逼~
+摒弃同类产品的劣根，汲取优秀产品的精华，结合数据管理的优势，打造出轻量实用幸福的产品，为react-router更好的赋能！！
 
-[![npm](https://img.shields.io/npm/v/moreact-router.svg?style=flat-square)](https://www.npmjs.com/package/moreact-router) [![npm](https://img.shields.io/npm/dt/moreact-router.svg?style=flat-square)](https://www.npmjs.com/package/moreact-router)
+[![npm](https://img.shields.io/npm/v/@monajs/react-router.svg?style=flat-square)](https://www.npmjs.com/package/@monajs/react-router) [![npm](https://img.shields.io/npm/dt/@monajs/react-router.svg?style=flat-square)](https://www.npmjs.com/package/@monajs/react-router)
 
 ## 联系我
-> 微信：yx12032331
+> 微信：599321378
 
 ## 大致介绍
 
@@ -136,7 +135,6 @@ import Router from 'moreact-router'
 
 console.dir(Router.routeInfo)
 ```
-😄😄这样就OK了哈～～是不是非常skr！
 
 ![Image text](./images/url.png)
 
