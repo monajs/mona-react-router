@@ -1,7 +1,7 @@
 {
-	"name": "moreact-router",
-	"version": "0.4.0",
-	"description": "Mona - 赋能版 react-router",
+	"name": "@monajs/react-router",
+	"version": "0.5.0",
+	"description": "赋能版 react-router",
 	"main": "./lib/index.js",
 	"files": [
 		"lib"
@@ -13,7 +13,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/func-star/mo-react-router.git"
+		"url": "git+https://github.com/monajs/mona-react-router.git"
 	},
 	"keywords": [
 		"mona",
@@ -25,9 +25,9 @@
 	"author": "yangxi",
 	"license": "ISC",
 	"bugs": {
-		"url": "https://github.com/func-star/mo-react-router/issues"
+		"url": "https://github.com/monajs/mona-react-router/issues"
 	},
-	"homepage": "https://github.com/func-star/mo-react-router#readme",
+	"homepage": "https://github.com/monajs/mona-react-router#readme",
 	"devDependencies": {
 		"babel-core": "^6.26.0",
 		"babel-loader": "^7.1.2",
@@ -61,6 +61,6 @@
 		"react-dom": "15.6.1"
 	},
 	"dependencies": {
-		"mona-events": "0.0.5"
+		"@monajs/events": "^1.1.1"
 	}
 }

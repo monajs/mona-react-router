@@ -4,9 +4,6 @@
 
 [![npm](https://img.shields.io/npm/v/@monajs/react-router.svg?style=flat-square)](https://www.npmjs.com/package/@monajs/react-router) [![npm](https://img.shields.io/npm/dt/@monajs/react-router.svg?style=flat-square)](https://www.npmjs.com/package/@monajs/react-router)
 
-## 联系我
-> 微信：599321378
-
 ## 大致介绍
 
 这款轻量版 react-router 是基于 history api 和 hash 实现的，用户可以根据业务场景和需求选择 router 类型。
@@ -16,12 +13,12 @@
 
 ### 依赖
 
-- [mona-events](https://github.com/func-star/mona-events)
+- [@monajs/events](https://github.com/monajs/mona-events)
 
 ### 安装
 
 ```bash
-$ npm i --save moreact-router
+$ npm i --save @monajs/react-router
 ```
 
 - [上手使用](#上手使用)
@@ -34,7 +31,7 @@ $ npm i --save moreact-router
 ```js
 import React, { Component } from 'react';
 import { render } from 'react-dom';
-import Router from 'moreact-router';
+import Router from '@monajs/react-router';
 
 import DefaultLayout from 'views/layout/default'
 import NoMatch from 'pages/noMatch'
@@ -79,7 +76,7 @@ render(<Router config={routerConf} />, document.getElementById('appWrapper'));
 ### 如何实现页面间跳转
 
 ```js
-import Router from 'moreact-router'
+import Router from '@monajs/react-router'
 
 const Link = Router.link
 
@@ -101,7 +98,7 @@ const Link = Router.link
 #### api 跳转
 
 ```js
-import Router from 'moreact-router'
+import Router from '@monajs/react-router'
 
 ...
 
@@ -121,7 +118,7 @@ Router.go ('404', {name: 'yangxi'}, 'title', {s: 'state'})
 ### 如何获取页面的信息
 #### 获取本页面信息
 ```js
-import Router from 'moreact-router'
+import Router from '@monajs/react-router'
 
 ...
 
@@ -129,7 +126,7 @@ console.dir(Router.current)
 ```
 #### 获取其他面信息
 ```js
-import Router from 'moreact-router'
+import Router from '@monajs/react-router'
 
 ...
 
@@ -153,7 +150,7 @@ console.dir(Router.routeInfo)
 ### 如何监听路由变化
 
 ```js
-import Router from 'moreact-router'
+import Router from '@monajs/react-router'
 ...
 
 Router.addEventListener('onChange', (res) => {
@@ -161,4 +158,5 @@ Router.addEventListener('onChange', (res) => {
 })
 ```
 
-* 目前仅支持了 onChange事件
+## 联系我
+> 微信：yx12032331

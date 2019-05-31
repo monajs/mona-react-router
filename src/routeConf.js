@@ -4,8 +4,8 @@ import Home from 'pages/home'
 
 export default {
 	index: 'home',
-	emptyPage: 'test',
-	type: 'hash',
+	type: 'history',
+	baseUrl: 'aaa',
 	routeList: [
 		{
 			layout: DefaultLayout,
