@@ -3,16 +3,18 @@ import {
   ROUTER_TYPE_KEY_HASH,
   ROUTER_TYPE_KEY_HISTORY,
   ROUTER_CHANGE_EVENT,
+  ROUTER_MISS_EVENT,
   ROUTER_CHANGE_FINISH_EVENT
 } from './constant'
 import Events from 'mona-events'
 import Router from './index'
 
 class Route extends Events {
-  setConfig (routeConfig) {
+  setConfig (routeConfig = {}) {
     this.routeConfig = Object.assign({
+      baseUrl: '',
       type: ROUTER_TYPE_KEY_HASH,
-      isHistory: routeConfig.type === ROUTER_TYPE_KEY_HISTORY // 限定死了hash 和history
+      isHistory: routeConfig.type === ROUTER_TYPE_KEY_HISTORY
     }, routeConfig)
 
     Router.routeConfig = this.routeConfig
@@ -36,16 +38,16 @@ class Route extends Events {
     } else {
       let p = window.location.hash.substring(1)
       if (p.charAt(0) !== '/') {
-        p = '/' + p
+        p = `/${p}`
       }
       url = new Url(p)
     }
     const routePath = url.pathname.length > 1 ? url.pathname.substring(1) : index
     const routeInfo = this.matchRoute(routePath)
 
-    // TODO 添加404捕获事件
     if (!routeInfo) {
-      throw new Error('Miss route info, 404.')
+      this.emit(ROUTER_MISS_EVENT)
+      throw new Error('404.')
     }
 
     const params = Url.parseParam(url.search)
@@ -59,8 +61,8 @@ class Route extends Events {
   }
 
   parseStrToRegExp (str) {
-    let params = []
-    let reg = str.replace(/\/\:([^\/]+)/g, (t, k) => {
+    const params = []
+    const reg = str.replace(/\/\:([^\/]+)/g, (t, k) => {
       params.push(k)
       return '/([^\/]*)'
     })
@@ -71,35 +73,33 @@ class Route extends Events {
   }
 
   matchRoute (path) {
+    const { defaultLayout, isHistory } = this.routeConfig
     if (!this.routeInfo) {
       this.routeInfo = []
       this.routeConfig.routeList.forEach((ri) => {
-        const keys = Object.keys(ri.routes)
-        this.routeInfo = this.routeInfo.concat(keys.map((v) => {
-          const info = {
-            layout: ri.layout,
-            path: v,
-            page: ri.routes[v]
-          }
-          return Object.assign(info, this.parseStrToRegExp(v))
-        }))
+        this.routeInfo.push({
+          ...ri,
+          ...this.parseStrToRegExp(ri.path),
+          layout: ri.layout || defaultLayout
+        })
       })
+      Router.routeInfo = this.routeInfo
     }
 
-    Router.routeInfo = this.routeInfo
     for (let i = 0; i < this.routeInfo.length; i++) {
-      let regInfo = this.routeInfo[i].regExp.exec(path)
+      const routeItem = this.routeInfo[i]
+      const regInfo = routeItem.regExp.exec(path)
       if (regInfo) {
-        let paramData = regInfo.slice(1)
-        let params = {}
-        this.routeInfo[i].params.forEach((v, j) => {
+        const paramData = regInfo.slice(1)
+        const params = {}
+        routeItem.params.forEach((v, j) => {
           params[v] = paramData[j]
         })
-        let routeInfo = Object.assign({}, this.routeInfo[i], {
+        const routeInfo = Object.assign({}, this.routeInfo[i], {
           routePath: path,
-          params: params
+          params
         })
-        if (this.routeConfig.isHistory) {
+        if (isHistory) {
           routeInfo.state = window.history.state
         }
         return routeInfo
@@ -108,26 +108,26 @@ class Route extends Events {
     return false
   }
 
+  // 路由切换结束
   changeFinish () {
     this.emit(ROUTER_CHANGE_FINISH_EVENT)
   }
 
-  switchPage (path, data, title = '', state = {}) {
-    const { isHistory, baseUrl } = this.routeConfig
-    if (isHistory) {
-      window.history.replaceState(state, title, '/' + baseUrl + '/' + path + (data ? '?' + Url.param(data) : ''))
-      this.format()
-    } else {
-      window.location.replace('#' + path + (data ? '?' + Url.param(data) : ''))
-    }
-  }
-
+  // 控制 path
   href (path, data) {
-    const { isHistory, baseUrl } = this.routeConfig
+    const { isHistory } = this.routeConfig
+    let { baseUrl } = this.routeConfig
+    if (path && path.charAt(0) !== '/') {
+      path = `/${path}`
+    }
+    const qs = data ? `?${Url.param(data)}` : ''
     if (isHistory) {
-      return '/' + baseUrl + '/' + path + (data ? '?' + Url.param(data) : '')
+      if (baseUrl && baseUrl.charAt(0) !== '/') {
+        baseUrl = `/${baseUrl}`
+      }
+      return `${baseUrl}${path}${qs}`
     } else {
-      return '#' + path + (data ? '?' + Url.param(data) : '')
+      return `#${path}${qs}`
     }
   }
 }
